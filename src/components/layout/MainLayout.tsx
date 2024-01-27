@@ -1,16 +1,16 @@
-import React from 'react';
-import Navbar from './Navbar';
+import React from "react";
+import Navbar from "./Navbar";
 
 interface Props {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
-function MainLayout({children}: Props) {
+function MainLayout({ children }: Props) {
   return (
-        <main>
-            <Navbar />
-            <div className="site-body">{children}</div>
-        </main>
+    <main>
+      <Navbar />
+      <div className="site-body">{children}</div>
+    </main>
   );
 }
 

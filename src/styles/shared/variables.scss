@@ -1,0 +1,66 @@
+@import 'mixins.scss';
+
+// Colors:
+
+$teal: #83C0C1;
+$text-dark: #161A30;
+$light-grey: #E5E1DA;
+$text-grey: #B6BBC4;
+
+// Fonts:
+@font-face {
+	font-family: 'OpenSans';
+	src: url('../../assets/fonts/OpenSans-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansMedium';
+	src: url('../../assets/fonts/OpenSans-Medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansSemiBold';
+	src: url('../../assets/fonts/OpenSans-SemiBold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansBold';
+	src: url('../../assets/fonts/OpenSans-Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+$font-base: 'OpenSans', sans-serif;
+$font-base-medium: 'OpenSansMedium', sans-serif;
+$font-base-semibold: 'OpenSansSemiBold', sans-serif;
+$font-base-bold: 'OpenSansBold', sans-serif;
+
+// Font sizes
+
+$font-size-lg: rem(40);
+$font-size-md: rem(24);
+$font-size: rem(18);
+$font-size-sm: rem(14);
+
+// Breakpoints 
+
+$bp-min-width-xxl: rem(1400);
+$bp-min-width-xl: rem(1200);
+$bp-min-width-lg: rem(992);
+$bp-min-width-md: rem(768);
+$bp-min-width-sm: rem(576);
+
+$bp-max-width-xxxl: rem(1600);
+$bp-max-width-xxl: rem(1440);
+$bp-max-width-xl: rem(1399.98);
+$bp-max-width-lg: rem(1199.98);
+$bp-max-width-md: rem(991.98);
+$bp-max-width-sm: rem(767.98);
+$bp-max-width-xs: rem(575.98);
+$bp-max-width-xxs: rem(374.98);

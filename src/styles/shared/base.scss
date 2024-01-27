@@ -1,6 +1,12 @@
 @import './variables.scss';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    margin: 0;
+    padding: 0;
     overflow: overlay;
 	font-size: $font-size;
 	font-family: $font-base;
@@ -26,6 +32,7 @@ h3,
 h4 {
 	font-family: $font-base-semibold;
 	font-weight: normal;
+    margin: 0;
 }
 
 h1 {
@@ -46,3 +53,6 @@ h4 {
 
 // Base
 
+.site-body {
+    margin-top: calc($header-min-height + rem(50));
+}

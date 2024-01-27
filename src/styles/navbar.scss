@@ -1,0 +1,35 @@
+@import './shared/variables.scss';
+
+.header {
+    @extend %flex;
+    min-height: $header-min-height;
+    width: 100%;
+    align-items: center;
+    top: 0;
+    left: 0;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 99;
+    background-color: $light-grey;
+
+    .header-name {
+        font-family: $font-base-bold;
+        font-size: $font-size-lg;
+        color: $teal;
+        padding-left: rem(30);
+    }
+
+    .header-controls {
+        @extend %flex;
+        align-items: center;
+
+        .control {
+            padding-right: rem(30);
+            cursor: pointer;
+
+            i {
+                padding-right: rem(10);
+            }
+        }    
+    }
+}

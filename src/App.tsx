@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.scss'
+import MainLayout from './components/layout/MainLayout';
+import WelcomeBanner from './components/WelcomeBanner';
+import BookFlightForm from './components/form/BookFlightForm';
+import TripsListing from './components/trips/TripsListing';
+
 
 function App() {
   return (
-    <div>
-      <h1>Hello world</h1>
-      <i className="fa-solid fa-plane"></i>
-    </div>
+    <MainLayout>
+      <WelcomeBanner />
+      <BookFlightForm />
+      <TripsListing />
+    </MainLayout>
   );
 }
 

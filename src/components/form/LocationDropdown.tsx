@@ -9,7 +9,7 @@ export interface AirportDropdownOption {
 interface Props {
   airportId?: number;
   disabled?: boolean;
-  className?: string;
+  name?: string;
   options: AirportDropdownOption[];
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -17,13 +17,13 @@ interface Props {
 function LocationDropdown({
   airportId,
   disabled,
-  className,
+  name,
   options,
   onChange,
 }: Props) {
   const dowpdownBox = (
-    <select defaultValue="0" className={className} disabled={disabled} onChange={onChange}>
-      <option value="0" disabled>Select your option...</option>
+    <select value={airportId} name={name} disabled={disabled} onChange={onChange}>
+      {airportId === 0 && <option value="0">Select your option...</option>}
       {options.map(({ id, title }) => (
         <option key={id} value={id}>
           {title}

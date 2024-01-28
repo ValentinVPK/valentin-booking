@@ -1,0 +1,21 @@
+@import '../styles/shared/variables.scss';
+
+.submit-btn {
+    @extend %flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $teal;
+    color: white;
+    padding: rem(10) rem(25) rem(10) rem(25);
+    min-height: rem(35);
+    border-style: none;
+    border-radius: rem(8);
+    width: 50%;
+    margin-top: rem(15);
+    font-size: $font-size;
+    cursor: pointer;
+
+    i {
+        padding-left: rem(15);
+    }
+}

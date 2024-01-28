@@ -1,0 +1,62 @@
+@import './shared/variables.scss';
+
+.bookings-listing {
+    @extend %flex;
+    flex-direction: column;
+    padding-bottom: rem(50);
+
+    h2 {
+        width: 100%;
+        text-align: center;
+        padding-top: rem(50);
+    }
+
+    .booking-card {
+        @extend %flex;
+        flex-direction: column;
+        width: 80%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: $form-background;
+        margin-top: rem(50);
+        padding: rem(30) rem(50) rem(30) rem(50);
+        border-radius: rem(30);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        .booked-by-name {
+            font-size: $font-size;
+            color: $text-dark;
+            padding-bottom: rem(15);
+        }
+
+        .booking-info {
+            @extend %flex;
+            justify-content: space-between;
+
+
+            .info-section {
+                @extend %flex;
+                flex-direction: column;
+
+                .small-title {
+                    font-size: $font-size-sm;
+                    color: $text-grey;
+                    padding-bottom: rem(5);
+                }
+
+                .info-span {
+                    font-size: $font-size;
+                    color: $text-dark;
+                }
+            }
+
+            .separator {
+                background-color: $text-dark;
+                min-height: 100%;
+                width: rem(1);
+                margin-top: rem(5);
+            }
+        }
+    }
+}

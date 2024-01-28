@@ -22,6 +22,8 @@ h2 {
         .form-control {
             flex-direction: column;
             width: 45%;
+            position: relative;
+            padding-bottom: rem(20);
             
             label {
                 font-size: $font-size-sm;
@@ -38,6 +40,23 @@ h2 {
                 color: $text-dark;
                 padding-left: rem(10);
             }
+
+            .error-message {
+                font-size: $font-size-sm;
+                color: orangered;
+                padding-top: rem(5);
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
         }
     }
+}
+
+.success-message {
+    color: $teal;
+    font-size: $font-size;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
 }

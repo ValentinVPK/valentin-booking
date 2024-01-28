@@ -1,10 +1,21 @@
-import { FormData } from "../components/form/BookFlightForm";
+import { FormData, FormInputErrors } from "../components/form/BookFlightForm";
+import { validateEmptyTextInputFields, validateDateInputFields, validateAirportDropdownFields } from "./validationFunctions";
 
-export const validateFormData = (section: HTMLElement | null) => {
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
+function validateFormData(formData: FormData, defaultFormInputError: FormInputErrors) : FormInputErrors {
+    const errors: FormInputErrors = {...defaultFormInputError};
+
+    errors.firstNameError = validateEmptyTextInputFields(formData.firstName);
+    errors.lastNameError = validateEmptyTextInputFields(formData.lastName);
+    errors.departureDateError = validateEmptyTextInputFields(formData.departureDate); 
+    errors.returnDateError = validateEmptyTextInputFields(formData.returnDate);
+    errors.departureAfterArrivalError = validateDateInputFields(formData.departureDate, formData.returnDate);
+    errors.departureAirportIdError = validateAirportDropdownFields(formData.departureAirportId);
+    errors.arrivalAirportIdError = validateAirportDropdownFields(formData.arrivalAirportId);
+
+    return errors;
+} 
+
+export { validateFormData }
 
 async function postFormData(formData: FormData) : Promise<void> {
 

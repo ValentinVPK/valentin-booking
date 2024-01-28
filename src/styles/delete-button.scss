@@ -1,0 +1,17 @@
+@import './shared/variables.scss';
+
+.delete-btn {
+    @extend %flex;
+    background-color: orangered;
+    border-radius: rem(8);
+    border-style: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: rem(15);
+
+    i {
+        color: white;
+        font-size: $font-size;
+    }
+}

@@ -1,20 +1,43 @@
 @import '../styles/shared/variables.scss';
 
-
 .book-flight-form,
 .form-row,
 .form-control {
     @extend %flex;
 }
 
+h2 {
+    text-align: center;
+}
 
 .book-flight-form {
+    padding-top: rem(15);
     flex-direction: column;
 
     .form-row {
+        align-items: center;
+        justify-content: space-around;
+        padding-bottom: rem(15);
 
         .form-control {
             flex-direction: column;
+            width: 45%;
+            
+            label {
+                font-size: $font-size-sm;
+                padding-bottom: rem(5);
+            }
+
+            input {
+                border-radius: rem(8);
+                border-width: rem(1);
+                border-style: solid;
+                border-color: #ced4e2;
+                min-height: rem(28);
+                font-size: $font-size;
+                color: $text-dark;
+                padding-left: rem(10);
+            }
         }
     }
 }

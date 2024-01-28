@@ -1,21 +1,65 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import FormCardWrapper from "./FormCardWrapper";
-import '../../styles/book-flight-form.scss';
+import { LocationDropdown, AirportDropdownOption } from "./LocationDropdown";
+import fetchAirports from "../../utils/fetchAirports";
+import "../../styles/book-flight-form.scss";
 
 interface FormData {
   firstName: string;
   lastName: string;
+  departureAirportId: number;
+  arrivalAirportId: number;
+  departureDate: string;
+  returnDate: string;
 }
 
 function BookFlightForm() {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
+    firstName: '',
+    lastName: '',
+    departureAirportId: 0,
+    arrivalAirportId: 0,
+    departureDate: '',
+    returnDate: ''
   });
+  const [fetchAirportsError, setFetchAirportsError] = useState<string | null>(
+    null
+  );
+  const [airports, setAirports] = useState<AirportDropdownOption[]>([]);
+  const [departureAirportId, setDepartureAirportId] = useState<number>(0);
+  const [arrivalAirportId, setArrivalAirportId] = useState<number>(0);
 
-  const handleInputChange = () => {
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await fetchAirports();
+        setAirports(data);
+      } catch (error: any) {
+        setFetchAirportsError(error.message);
+      }
+    }
 
+    fetchData();
+  }, []);
+
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target;
+    setFormData({ ...formData, [name]: value});
   }
+
+  const onDepartureAiportDropdownChange = (
+    event: ChangeEvent<HTMLSelectElement>
+  ) => {
+    setDepartureAirportId(+event.target.value);
+  };
+
+  const onArrivalAiportDropdownChange = (
+    event: ChangeEvent<HTMLSelectElement>
+  ) => {
+    setArrivalAirportId(+event.target.value);
+  };
+
+  const today = new Date().toISOString().split("T")[0];
 
   return (
     <FormCardWrapper>
@@ -23,58 +67,69 @@ function BookFlightForm() {
       <form className="book-flight-form">
         <div className="form-row">
           <div className="form-control">
-            <label>
-              First Name:
-              <input
-                type="text"
-                name="first-name"
-                value={formData.firstName}
-                onChange={handleInputChange}
-              />
-            </label>
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={onInputChange}
+            />
           </div>
 
           <div className="form-control">
-            <label>
-              Last Name:
-              <input
-                type="text"
-                name="last-name"
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-            </label>
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={onInputChange}
+            />
           </div>
         </div>
         <div className="form-row">
-
           <div className="form-control">
-            <label>
-              Last Name:
-              <input
-                type="date"
-                name="departure-date"
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-            </label>
+            <label htmlFor="departureDate">Departure Date:</label>
+            <input
+              type="date"
+              name="departureDate"
+              min={today}
+              value={formData.lastName}
+              onChange={onInputChange}
+            />
           </div>
 
           <div className="form-control">
-            <label>
-              Return Date:
-              <input
-                type="date"
-                name="return-date"
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-            </label>
+            <label htmlFor="returnDate">Return Date:</label>
+            <input
+              type="date"
+              name="returnDate"
+              value={formData.lastName}
+              onChange={onInputChange}
+            />
           </div>
-
         </div>
 
-        <button type="submit">Submit</button>
+        <div className="form-row">
+          <div className="form-control">
+          <label>Choose departure airport</label>
+            <LocationDropdown
+              options={airports}
+              airportId={departureAirportId}
+              onChange={onDepartureAiportDropdownChange}
+            />
+          </div>
+
+          <div className="form-control">
+            <label>Choose arrival airport</label>
+            <LocationDropdown
+              options={airports}
+              airportId={arrivalAirportId}
+              onChange={onArrivalAiportDropdownChange}
+            />
+          </div>
+        </div>
+
+        {/* <button type="submit">Submit</button> */}
       </form>
     </FormCardWrapper>
   );
